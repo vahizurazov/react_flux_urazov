@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  /* text-align: center; */
+}
+#root {
+  width: 75%;
+  margin: 0 auto;
+}
+input[type='checkbox']:checked + label {
+  text-decoration: line-through;
+  color: grey;
+}
+.h1 {
+  color: blue;
+  text-align: center;
+}
+.btn {
+  float: right;
+  margin-right: 10px;
+}
+#select {
+  margin-right: 10px;
+  -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -o-transform: scale(2);
+  height: 28px;
+  width: 28px;
+}
+.inputCheck {
+  margin-right: 10px;
+  float: left;
+  -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -o-transform: scale(2);
+  height: 28px;
+  width: 28px;
+}
+.list-group-item {
+  width: 100%;
+}
+.input-group-text {
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+.textLeft {
+  float: left;
+  font-size: 22px;
+}
+.list-group {
+  margin-bottom: 10px;
+}
+label {
+  font-size: 22px;
+}
+.col-9 {
+  word-wrap: break-word;
+}
