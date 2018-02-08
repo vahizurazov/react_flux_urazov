@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function ClearAll(props) {
   let { clearCompleted, items } = props;
-
+  // console.log(clearCompleted);
   if (!items.some(el => el.checked)) {
     return null;
   }

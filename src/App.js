@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import RenderWorkList from './RenderWorkList';
 import Footer from './Footer';
 import PropTypes from 'prop-types';
-import getState from './modules/todo/store';
+import { bindActionCreators } from 'redux';
+
 import {
   addTodo,
   checkItem,
@@ -17,45 +19,73 @@ import {
 import StoreEventBus from './modules/StoreEventBus';
 
 class App extends Component {
-  state = getState();
-
-  componentDidMount() {
-    StoreEventBus.register(payload => {
-      if (payload.event) {
-        this.setState(getState());
-      }
-    });
-  }
-
+  onSave = e => {
+    const { actions } = this.props;
+    const { value } = e.target;
+    if (e.keyCode !== 13 || !value) return;
+    actions.addTodo(value);
+    e.target.value = '';
+  };
+  isAllChecked = () => {
+    let check = this.props.todo.workList.every(item => item.checked);
+    return check;
+  };
   render() {
+    const { workList, filteredList, view } = this.props.todo;
+
+    const { actions } = this.props;
+
     return (
       <div className="col-12">
         <h1 className="h1">Todoshechka</h1>
         <input
           type="text"
-          onKeyDown={addTodo}
+          onKeyDown={this.onSave}
           className="input-group-text form-control"
         />
         <RenderWorkList
-          items={this.state.workList}
-          checked={checkItem}
-          deleted={deleteItem}
-          checkOnlyComp={this.state.onlyCompleted}
-          view={this.state.view}
-          activTasks={this.state.activTasks}
+          items={workList}
+          checked={actions.checkItem}
+          deleted={actions.deleteItem}
+          filteredList={filteredList}
+          view={view}
         />
         <Footer
-          items={this.state.workList}
-          clearCompleted={clearCompleted}
-          onlyCompleted={onlyCompleted}
-          allTasks={allTasks}
-          selectAll={selectAll}
-          isAllChecked={this.state.isAllChecked}
-          activTasks={activTasks}
+          items={workList}
+          clearCompleted={actions.clearCompleted}
+          onlyCompleted={actions.onlyCompleted}
+          allTasks={actions.allTasks}
+          selectAll={actions.selectAll}
+          isAllChecked={this.isAllChecked}
+          activTasks={actions.activTasks}
         />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(
+      {
+        addTodo,
+        checkItem,
+        deleteItem,
+        clearCompleted,
+        onlyCompleted,
+        allTasks,
+        selectAll,
+        activTasks,
+      },
+      dispatch,
+    ),
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    todo: state.todo,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

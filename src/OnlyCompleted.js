@@ -5,9 +5,13 @@ function OnlyCompleted(props) {
   let { onlyCompleted } = props;
   return (
     <div>
-      <button onClick={onlyCompleted} className="btn btn-secondary">
-        Completed
-      </button>
+      <label
+        htmlFor="btnOnly"
+        onClick={onlyCompleted}
+        className="btn btn-secondary"
+      >
+        <input type="radio" id="btnOnly" name="option" className="mr-2" />Completed
+      </label>
     </div>
   );
 }

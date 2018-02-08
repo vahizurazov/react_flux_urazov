@@ -5,9 +5,13 @@ function ActivTasks(props) {
   let { activTasks } = props;
   return (
     <div>
-      <button onClick={activTasks} className="btn btn-danger">
-        Activ
-      </button>
+      <label
+        htmlFor="btnActive"
+        onClick={activTasks}
+        className="btn btn-danger"
+      >
+        <input type="radio" id="btnActive" name="option" className="mr-2" />Active
+      </label>
     </div>
   );
 }

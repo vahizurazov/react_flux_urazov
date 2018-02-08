@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 function RenderWorkList(props) {
   let workList = props.items;
-  let onlyCompleted = props.checkOnlyComp;
-  let activTasks = props.activTasks;
+  // let filteredList = props.filteredList;
+
   let view = props.view;
   let nowShow;
   switch (view) {
     case 'all':
-      nowShow = workList;
+      nowShow = workList.slice();
       break;
     case 'completed':
-      nowShow = onlyCompleted;
+      nowShow = workList.filter(el => el.checked);
       break;
     case 'activ':
-      nowShow = activTasks;
+      nowShow = workList.filter(el => !el.checked);
       break;
   }
 

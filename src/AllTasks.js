@@ -5,9 +5,15 @@ function AllTasks(props) {
   let { allTasks } = props;
   return (
     <div>
-      <button onClick={allTasks} className="btn btn-warning">
-        All
-      </button>
+      <label htmlFor="btnAll" onClick={allTasks} className="btn btn-warning ">
+        <input
+          defaultChecked
+          type="radio"
+          id="btnAll"
+          name="option"
+          className="mr-2"
+        />All
+      </label>
     </div>
   );
 }

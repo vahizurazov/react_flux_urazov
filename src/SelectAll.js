@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 function SelectAll(props) {
-  let { selectAll } = props; ////?????
-  // console.log(props);
+  let { selectAll } = props;
+
   return (
     <div>
       <input
         type="checkbox"
         id="select"
-        onClick={() => props.selectAll()}
+        onChange={() => props.selectAll(props.isAllChecked())}
         checked={props.isAllChecked()}
       />
       <label htmlFor="select">Select All</label>
