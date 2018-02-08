@@ -33,7 +33,7 @@ const todo = (state = initialState, action) => {
               checked: !el.checked,
             };
           }
-          return el;
+          return { ...el };
         }),
       };
 
@@ -44,13 +44,21 @@ const todo = (state = initialState, action) => {
       ) {
         return {
           ...state,
-          workList: state.workList.filter((el, l) => l !== action.i),
+          workList: state.workList.filter((el, l) => {
+            if (l !== action.i) {
+              return { ...el };
+            }
+          }),
           view: 'all',
         };
       } else {
         return {
           ...state,
-          workList: state.workList.filter((el, l) => l !== action.i),
+          workList: state.workList.filter((el, l) => {
+            if (l !== action.i) {
+              return { ...el };
+            }
+          }),
         };
       }
 
@@ -58,13 +66,21 @@ const todo = (state = initialState, action) => {
       if (!state.workList.filter(el => !el.checked).length) {
         return {
           ...state,
-          workList: state.workList.filter(el => !el.checked),
+          workList: state.workList.filter(el => {
+            if (!el.checked) {
+              return { ...el };
+            }
+          }),
           view: 'all',
         };
       } else {
         return {
           ...state,
-          workList: state.workList.filter(el => !el.checked),
+          workList: state.workList.filter(el => {
+            if (!el.checked) {
+              return { ...el };
+            }
+          }),
         };
       }
 
@@ -85,11 +101,11 @@ const todo = (state = initialState, action) => {
         ...state,
         workList: state.workList.map(el => {
           el.checked = action.value ? false : true;
-          return el;
+          return { ...el };
         }),
       };
 
-    case actionTypes.ACTIVE_TASKS:
+    case actionTypes.SHOW_ACTIVE_TASKS:
       return {
         ...state,
         view: 'activ',

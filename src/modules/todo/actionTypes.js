@@ -5,4 +5,4 @@ export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 export const ONLY_COMPLETED = 'ONLY_COMPLETED';
 export const ALL_TASKS = 'ALL_TASKS';
 export const SELECT_ALL = 'SELECT_ALL';
-export const ACTIVE_TASKS = 'ACTIVE_TASKS';
+export const SHOW_ACTIVE_TASKS = 'SHOW_ACTIVE_TASKS';

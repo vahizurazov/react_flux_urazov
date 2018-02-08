@@ -33,5 +33,5 @@ export const selectAll = value => ({
 });
 
 export const activTasks = () => ({
-  type: actionTypes.ACTIVE_TASKS,
+  type: actionTypes.SHOW_ACTIVE_TASKS,
 });
