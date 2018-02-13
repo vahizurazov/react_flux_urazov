@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 function SelectAll(props) {
+  console.log(props);
   let { selectAll } = props;
 
   return (

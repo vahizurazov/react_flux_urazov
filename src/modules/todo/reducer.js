@@ -4,6 +4,7 @@ const initialState = {
   workList: [],
   filteredList: [],
   view: 'all',
+  weather: {},
 };
 
 const todo = (state = initialState, action) => {
@@ -108,7 +109,12 @@ const todo = (state = initialState, action) => {
     case actionTypes.SHOW_ACTIVE_TASKS:
       return {
         ...state,
-        view: 'activ',
+        view: 'active',
+      };
+    case actionTypes.SAVE_STORE_WEATHER:
+      return {
+        ...state,
+        weather: action.response,
       };
     default:
       return state;

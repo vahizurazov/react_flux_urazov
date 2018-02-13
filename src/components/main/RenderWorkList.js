@@ -14,7 +14,7 @@ function RenderWorkList(props) {
     case 'completed':
       nowShow = workList.filter(el => el.checked);
       break;
-    case 'activ':
+    case 'active':
       nowShow = workList.filter(el => !el.checked);
       break;
   }

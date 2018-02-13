@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
-import RenderWorkList from './RenderWorkList';
-import Footer from './Footer';
+import '../App.css';
+import RenderWorkList from '../components/main/RenderWorkList';
+import Footer from '../components/footer/Footer';
+import WeatherForecast from '../components/weatherForecast/WeatherForecast';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-
 import {
   addTodo,
   checkItem,
@@ -15,8 +15,9 @@ import {
   allTasks,
   selectAll,
   activTasks,
-} from './modules/todo/actions';
-import StoreEventBus from './modules/StoreEventBus';
+  weatherForecast,
+  saveStoreWeather,
+} from '../modules/todo/actions';
 
 class App extends Component {
   onSave = e => {
@@ -31,7 +32,7 @@ class App extends Component {
     return check;
   };
   render() {
-    const { workList, filteredList, view } = this.props.todo;
+    const { workList, filteredList, view, weather } = this.props.todo;
 
     const { actions } = this.props;
 
@@ -59,6 +60,11 @@ class App extends Component {
           isAllChecked={this.isAllChecked}
           activTasks={actions.activTasks}
         />
+        <WeatherForecast
+          weatherForecast={actions.weatherForecast}
+          saveStoreWeather={actions.saveStoreWeather}
+          weather={weather}
+        />
       </div>
     );
   }
@@ -76,6 +82,8 @@ const mapDispatchToProps = dispatch => {
         allTasks,
         selectAll,
         activTasks,
+        weatherForecast,
+        saveStoreWeather,
       },
       dispatch,
     ),
