@@ -2,29 +2,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function WeatherData(props) {
-  let { weatherForecast, saveStoreWeather, weather } = props;
-  console.log(weather);
+  let { weather } = props;
   if (!Object.keys(weather).length) {
     return null;
   }
+
+  const objectWeatherData = weather.weather[0];
   const iconUrl =
-    'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png';
+    'http://openweathermap.org/img/w/' + objectWeatherData.icon + '.png';
   return (
     <div>
       <h1>
-        {weather.weather[0].main} in {weather.name}
-        <img src={iconUrl} alt={weather.weather[0].description} />
+        {objectWeatherData.main} in {weather.name}
+        <img src={iconUrl} alt={objectWeatherData.description} />
       </h1>
-      <p>Current: {weather.main.temp}°</p>
-      <p>High: {weather.main.temp_max}°</p>
-      <p>Low: {weather.main.temp_min}°</p>
+      <p>
+        Current: {weather.main.temp}
+        &#8451;
+      </p>
+      <p>
+        High: {weather.main.temp_max}
+        &#8451;
+      </p>
+      <p>
+        Low: {weather.main.temp_min}
+        &#8451;
+      </p>
       <p>Wind Speed: {weather.wind.speed} mi/hr</p>
+      {/* <p>{data}</p> */}
     </div>
   );
 }
 
 WeatherData.propTypes = {
-  weatherForecast: PropTypes.func,
-  saveStoreWeather: PropTypes.func,
+  weather: PropTypes.object,
 };
 export default WeatherData;

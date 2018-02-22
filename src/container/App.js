@@ -4,7 +4,8 @@ import '../App.css';
 import RenderWorkList from '../components/main/RenderWorkList';
 import Footer from '../components/footer/Footer';
 import WeatherForecast from '../components/weatherForecast/WeatherForecast';
-import PropTypes from 'prop-types';
+
+// import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import {
   addTodo,
@@ -17,13 +18,20 @@ import {
   activTasks,
   weatherForecast,
   saveStoreWeather,
+  startSagaWeather,
 } from '../modules/todo/actions';
+
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   onSave = e => {
     const { actions } = this.props;
     const { value } = e.target;
+
     if (e.keyCode !== 13 || !value) return;
+    if (value.toLowerCase() === 'погода' || value.toLowerCase() === 'weather') {
+      actions.startSagaWeather();
+    }
     actions.addTodo(value);
     e.target.value = '';
   };
@@ -31,9 +39,14 @@ class App extends Component {
     let check = this.props.todo.workList.every(item => item.checked);
     return check;
   };
+  clearLocalStorage = () => {
+    localStorage.removeItem('login');
+    localStorage.removeItem('password');
+  };
+
   render() {
     const { workList, filteredList, view, weather } = this.props.todo;
-
+    console.log(this.props);
     const { actions } = this.props;
 
     return (
@@ -64,7 +77,11 @@ class App extends Component {
           weatherForecast={actions.weatherForecast}
           saveStoreWeather={actions.saveStoreWeather}
           weather={weather}
+          startSagaWeather={actions.startSagaWeather}
         />
+        <Link to="/authorization" onClick={this.clearLocalStorage}>
+          Sing Out
+        </Link>
       </div>
     );
   }
@@ -84,6 +101,7 @@ const mapDispatchToProps = dispatch => {
         activTasks,
         weatherForecast,
         saveStoreWeather,
+        startSagaWeather,
       },
       dispatch,
     ),

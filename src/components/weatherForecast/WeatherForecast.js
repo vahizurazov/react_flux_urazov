@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import WeatherData from './WeatherData';
 
 function WeatherForecast(props) {
-  let { weatherForecast, saveStoreWeather, weather } = props;
+  let { weather, startSagaWeather } = props;
 
   return (
     <div>
-      <button onClick={weatherForecast}>Weather Forecast</button>
-      <WeatherData
-        weatherForecast={weatherForecast}
-        saveStoreWeather={saveStoreWeather}
-        weather={weather}
-      />
+      <button onClick={startSagaWeather}>Weather Forecast</button>
+      <WeatherData weather={weather} />
     </div>
   );
 }
@@ -20,5 +16,6 @@ function WeatherForecast(props) {
 WeatherForecast.propTypes = {
   weatherForecast: PropTypes.func,
   saveStoreWeather: PropTypes.func,
+  startSagaWeather: PropTypes.func,
 };
 export default WeatherForecast;

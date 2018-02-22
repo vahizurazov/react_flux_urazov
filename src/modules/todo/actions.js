@@ -42,15 +42,19 @@ export const saveStoreWeather = response => ({
   response,
 });
 
+export const startSagaWeather = () => ({
+  type: actionTypes.START_SAGA_WEATHER,
+});
+
 export const weatherForecast = () => {
-  return dispatch => {
-    fetch(
-      'http://api.openweathermap.org/data/2.5/weather?appid=3b2dce7c397645e8583f51b27d0279dc&q=Kharkiv&units=metric',
-    )
-      .then(response => response.json())
-      .then(response => dispatch(saveStoreWeather(response)))
-      .catch(error => {});
-  };
+  // return dispatch => {
+  //   fetch(
+  //     'http://api.openweathermap.org/data/2.5/weather?appid=3b2dce7c397645e8583f51b27d0279dc&q=Kharkiv&units=metric',
+  //   )
+  //     .then(response => response.json())
+  //     .then(response => dispatch(saveStoreWeather(response)))
+  //     .catch(error => {});
+  // };
 };
 
 // const getWeather = () => {
