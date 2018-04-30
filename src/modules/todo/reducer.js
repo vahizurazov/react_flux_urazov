@@ -2,7 +2,7 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
   workList: [],
-  filteredList: [],
+  // filteredList: [],
   view: 'all',
   weather: {},
 };
@@ -101,12 +101,13 @@ const todo = (state = initialState, action) => {
       return {
         ...state,
         workList: state.workList.map(el => {
-          el.checked = action.value ? false : true;
+          el.checked = !action.value;
           return { ...el };
         }),
       };
 
     case actionTypes.SHOW_ACTIVE_TASKS:
+      console.log('4444', state);
       return {
         ...state,
         view: 'active',

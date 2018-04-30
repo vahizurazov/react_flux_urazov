@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function ActivTasks(props) {
   let { activTasks } = props;
+  // console.log(props);
   return (
     <div>
       <label

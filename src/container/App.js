@@ -27,7 +27,6 @@ class App extends Component {
   onSave = e => {
     const { actions } = this.props;
     const { value } = e.target;
-
     if (e.keyCode !== 13 || !value) return;
     if (value.toLowerCase() === 'погода' || value.toLowerCase() === 'weather') {
       actions.startSagaWeather();
@@ -46,7 +45,6 @@ class App extends Component {
 
   render() {
     const { workList, filteredList, view, weather } = this.props.todo;
-    console.log(this.props);
     const { actions } = this.props;
 
     return (

@@ -6,6 +6,7 @@ function RenderWorkList(props) {
   // let filteredList = props.filteredList;
 
   let view = props.view;
+  // console.log(view);
   let nowShow;
   switch (view) {
     case 'all':
