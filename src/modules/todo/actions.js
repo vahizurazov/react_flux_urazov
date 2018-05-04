@@ -46,29 +46,6 @@ export const startSagaWeather = () => ({
   type: actionTypes.START_SAGA_WEATHER,
 });
 
-export const weatherForecast = () => {
-  // return dispatch => {
-  //   fetch(
-  //     'http://api.openweathermap.org/data/2.5/weather?appid=3b2dce7c397645e8583f51b27d0279dc&q=Kharkiv&units=metric',
-  //   )
-  //     .then(response => response.json())
-  //     .then(response => dispatch(saveStoreWeather(response)))
-  //     .catch(error => {});
-  // };
-};
-
-// const getWeather = () => {
-//   debugger;
-//   fetch('https://jsonplaceholder.typicode.com/posts')
-//     .then(response => response.json())
-//     .then(response =>dispatch(saveStoreWeather(response)))
-//     .catch(error => {});
-// };
-// .then(res =>
-//   fetch(
-//     `http://api.openweathermap.org/data/2.5/weather?appid=26c4e78ec28ff3bc979f704736e6e244&q=${
-//       res.city
-//     }`,
-//   ),
-// )
-// .then(response => console.log(response.json()))
+export const closeWeather = () => ({
+  type: actionTypes.CLOSE_WEATHER,
+});

@@ -5,6 +5,7 @@ const initialState = {
   // filteredList: [],
   view: 'all',
   weather: {},
+  isWeatherShow: false,
 };
 
 const todo = (state = initialState, action) => {
@@ -116,6 +117,16 @@ const todo = (state = initialState, action) => {
       return {
         ...state,
         weather: action.response,
+      };
+    case actionTypes.START_SAGA_WEATHER:
+      return {
+        ...state,
+        isWeatherShow: true,
+      };
+    case actionTypes.CLOSE_WEATHER:
+      return {
+        ...state,
+        isWeatherShow: false,
       };
     default:
       return state;

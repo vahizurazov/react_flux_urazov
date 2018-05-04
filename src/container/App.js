@@ -16,9 +16,9 @@ import {
   allTasks,
   selectAll,
   activTasks,
-  weatherForecast,
   saveStoreWeather,
   startSagaWeather,
+  closeWeather,
 } from '../modules/todo/actions';
 
 import { Link } from 'react-router-dom';
@@ -44,9 +44,16 @@ class App extends Component {
   };
 
   render() {
-    const { workList, filteredList, view, weather } = this.props.todo;
+    const {
+      workList,
+      filteredList,
+      view,
+      weather,
+      isWeatherShow,
+    } = this.props.todo;
     const { actions } = this.props;
 
+    console.log('isWeatherShow', isWeatherShow);
     return (
       <div className="col-12">
         <h1 className="h1">Todoshechka</h1>
@@ -73,9 +80,11 @@ class App extends Component {
         />
         <WeatherForecast
           weatherForecast={actions.weatherForecast}
-          saveStoreWeather={actions.saveStoreWeather}
+          // saveStoreWeather={actions.saveStoreWeather}
           weather={weather}
           startSagaWeather={actions.startSagaWeather}
+          isWeatherShow={isWeatherShow}
+          closeWeather={actions.closeWeather}
         />
         <Link to="/authorization" onClick={this.clearLocalStorage}>
           Sing Out
@@ -97,9 +106,9 @@ const mapDispatchToProps = dispatch => {
         allTasks,
         selectAll,
         activTasks,
-        weatherForecast,
         saveStoreWeather,
         startSagaWeather,
+        closeWeather,
       },
       dispatch,
     ),

@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import store from './modules/todo/store';
+// import store from './modules/another/store';
 import createBrowserHistory from 'history/createBrowserHistory';
 import ComponetToRender from './container/ComponentToRender';
 
